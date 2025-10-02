@@ -91,17 +91,3 @@ O sistema controla operações de uma clínica médica: cadastro de pacientes, m
 ### Diagrama Conceitual (Representação Visual)
 
 ![Diagrama Entidade-Relacionamento](imagens/DER.png)
-
-### Diagrama Conceitual (Representação Textual)
-
-```
-PACIENTE (1,1) ----< agenda >---- (0,N) CONSULTA (0,N) ----< atende >---- (1,1) MEDICO
-                                            |                                   |
-                                            |                                   |
-                                    (1,1)   |   (0,N)                   (1,N)  |  (1,N)
-                                            |                                   |
-                                         EXAME                        MEDICO_ESPECIALIDADE
-                                         RECEITA                            |
-                                         PAGAMENTO                   ESPECIALIDADE (1,1)
-```
-
