@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Clínica Médica
+# Gerenciamento de Clínica Médica
 ## Projeto de Banco de Dados
 
 ### Tema Escolhido
