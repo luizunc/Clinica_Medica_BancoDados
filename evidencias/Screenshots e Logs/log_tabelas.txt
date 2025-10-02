@@ -1,0 +1,43 @@
+20:03:38	USE clinica_medica_db	0 row(s) affected	0,000 sec
+
+20:03:38	SELECT nome, cpf, telefone, convenio FROM PACIENTE WHERE status = 'ativo' LIMIT 0, 1000	8 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT m.nome AS medico, m.crm, e.nome AS especialidade FROM MEDICO m  JOIN MEDICO_ESPECIALIDADE me ON m.id_medico = me.id_medico  JOIN ESPECIALIDADE e ON me.id_especialidade = e.id_especialidade LIMIT 0, 1000	10 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT m.nome AS medico, p.nome AS paciente, c.data_consulta, c.hora_consulta, c.status  FROM CONSULTA c  JOIN MEDICO m ON c.id_medico = m.id_medico  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  WHERE c.data_consulta = CURRENT_DATE LIMIT 0, 1000	0 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, m.nome AS medico, e.nome AS especialidade, c.data_consulta, c.hora_consulta  FROM CONSULTA c  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  JOIN MEDICO m ON c.id_medico = m.id_medico  JOIN ESPECIALIDADE e ON c.id_especialidade = e.id_especialidade  WHERE c.status = 'agendada' LIMIT 0, 1000	4 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT c.data_consulta, m.nome AS medico, e.nome AS especialidade, c.status, c.observacoes  FROM CONSULTA c  JOIN MEDICO m ON c.id_medico = m.id_medico  JOIN ESPECIALIDADE e ON c.id_especialidade = e.id_especialidade  WHERE c.id_paciente = 1 ORDER BY c.data_consulta DESC LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, ex.nome_exame, ex.data_solicitacao, ex.status  FROM EXAME ex  JOIN CONSULTA c ON ex.id_consulta = c.id_consulta  JOIN PACIENTE p ON c.id_paciente = p.id_paciente LIMIT 0, 1000	3 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, r.medicamentos, r.dosagem, r.data_emissao, r.validade  FROM RECEITA r  JOIN CONSULTA c ON r.id_consulta = c.id_consulta  JOIN PACIENTE p ON c.id_paciente = p.id_paciente LIMIT 0, 1000	3 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, pg.valor_pago, pg.forma_pagamento, pg.status  FROM PAGAMENTO pg  JOIN CONSULTA c ON pg.id_consulta = c.id_consulta  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  WHERE pg.status = 'pendente' LIMIT 0, 1000	2 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT DATE_FORMAT(data_pagamento, '%Y-%m') AS mes, SUM(valor_pago) AS receita_total  FROM PAGAMENTO WHERE status = 'pago' GROUP BY DATE_FORMAT(data_pagamento, '%Y-%m') LIMIT 0, 1000	2 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT e.nome AS especialidade, COUNT(c.id_consulta) AS total_consultas  FROM CONSULTA c  JOIN ESPECIALIDADE e ON c.id_especialidade = e.id_especialidade  GROUP BY e.nome ORDER BY total_consultas DESC LIMIT 0, 1000	8 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT m.nome AS medico, COUNT(c.id_consulta) AS total_consultas  FROM CONSULTA c  JOIN MEDICO m ON c.id_medico = m.id_medico  GROUP BY m.nome ORDER BY total_consultas DESC LIMIT 0, 1000	8 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT nome, convenio, numero_convenio FROM PACIENTE WHERE convenio IS NOT NULL LIMIT 0, 1000	6 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, m.nome AS medico, c.data_consulta  FROM CONSULTA c  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  JOIN MEDICO m ON c.id_medico = m.id_medico  WHERE c.status = 'realizada' AND c.data_consulta >= DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH) LIMIT 0, 1000	0 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, ex.nome_exame, ex.data_realizacao, ex.resultado  FROM EXAME ex  JOIN CONSULTA c ON ex.id_consulta = c.id_consulta  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  WHERE ex.status = 'realizado' LIMIT 0, 1000	2 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, c.data_consulta, c.hora_consulta, c.status  FROM CONSULTA c  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  WHERE c.id_medico = 1 ORDER BY c.data_consulta, c.hora_consulta LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, r.medicamentos, r.validade  FROM RECEITA r  JOIN CONSULTA c ON r.id_consulta = c.id_consulta  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  WHERE r.validade >= CURRENT_DATE LIMIT 0, 1000	0 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT      (SELECT COUNT(*) FROM PACIENTE WHERE status = 'ativo') AS pacientes_ativos,     (SELECT COUNT(*) FROM MEDICO WHERE status = 'ativo') AS medicos_ativos,     (SELECT COUNT(*) FROM CONSULTA WHERE status = 'agendada') AS consultas_agendadas,     (SELECT COUNT(*) FROM EXAME WHERE status = 'solicitado') AS exames_pendentes LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT forma_pagamento, COUNT(*) AS quantidade, SUM(valor_pago) AS total  FROM PAGAMENTO WHERE status = 'pago' GROUP BY forma_pagamento LIMIT 0, 1000	4 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, m.nome AS medico, c.data_consulta, c.observacoes  FROM CONSULTA c  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  JOIN MEDICO m ON c.id_medico = m.id_medico  WHERE c.status = 'cancelada' LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT p.nome AS paciente, m.nome AS medico, c.data_consulta, c.hora_consulta  FROM CONSULTA c  JOIN PACIENTE p ON c.id_paciente = p.id_paciente  JOIN MEDICO m ON c.id_medico = m.id_medico  WHERE c.status = 'agendada' AND c.data_consulta BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 7 DAY) LIMIT 0, 1000	0 row(s) returned	0,000 sec / 0,000 sec
+
+20:03:38	SELECT 'Consultas executadas com sucesso!' AS status LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec

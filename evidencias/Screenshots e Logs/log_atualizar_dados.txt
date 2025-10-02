@@ -1,0 +1,55 @@
+20:05:08	USE clinica_medica_db	0 row(s) affected	0,000 sec
+
+20:05:08	UPDATE PACIENTE SET telefone = '(11) 99999-0000' WHERE id_paciente = 1	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE CONSULTA SET status = 'realizada' WHERE id_consulta = 1	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE CONSULTA SET status = 'cancelada', observacoes = 'Cancelada pelo paciente' WHERE id_consulta = 5	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE EXAME SET data_realizacao = CURRENT_DATE, resultado = 'Exame normal', status = 'realizado' WHERE id_exame = 2	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE PAGAMENTO SET status = 'pago', data_pagamento = CURRENT_DATE WHERE id_pagamento = 4	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	INSERT INTO ESPECIALIDADE (nome, descricao, valor_consulta) VALUES ('Urologia', 'Especialidade que trata do trato urinário', 210.00)	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO MEDICO (nome, crm, telefone, email) VALUES ('Dr. Ricardo Mendes', 'CRM12353', '(11) 99999-9999', 'ricardo.mendes@clinica.com')	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO MEDICO_ESPECIALIDADE (id_medico, id_especialidade, data_certificacao) VALUES (9, 9, CURRENT_DATE)	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO CONSULTA (data_consulta, hora_consulta, valor_consulta, id_paciente, id_medico, id_especialidade) VALUES ('2024-12-10', '10:00:00', 210.00, 1, 9, 9)	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO PAGAMENTO (valor_pago, forma_pagamento, status, id_consulta) VALUES (210.00, 'convenio', 'pendente', LAST_INSERT_ID())	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO EXAME (nome_exame, valor_exame, id_consulta) VALUES ('Ultrassom Abdominal', 150.00, 4)	1 row(s) affected	0,000 sec
+
+20:05:08	INSERT INTO RECEITA (medicamentos, dosagem, instrucoes, validade, id_consulta) VALUES ('Paracetamol 750mg', '1 comprimido de 8/8 horas', 'Tomar após as refeições', DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY), 1)	1 row(s) affected	0,015 sec
+
+20:05:08	UPDATE PACIENTE SET endereco = 'Rua Nova, 999, São Paulo, SP' WHERE id_paciente = 2	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE MEDICO SET status = 'inativo' WHERE id_medico = 7	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE ESPECIALIDADE SET valor_consulta = 250.00 WHERE nome = 'Neurologia'	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE EXAME SET status = 'cancelado' WHERE id_exame = 2	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE PAGAMENTO SET forma_pagamento = 'pix' WHERE id_pagamento = 5	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE CONSULTA SET observacoes = 'Paciente apresentou melhora significativa' WHERE id_consulta = 4	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	INSERT INTO PACIENTE (nome, cpf, data_nascimento, telefone, endereco, email) VALUES ('Lucas Ferreira', '123.456.789-09', '1987-04-12', '(11) 98888-9999', 'Rua I, 369, São Paulo, SP', 'lucas.ferreira@email.com')	1 row(s) affected	0,000 sec
+
+20:05:08	UPDATE CONSULTA SET data_consulta = '2024-12-15', hora_consulta = '14:00:00' WHERE id_consulta = 8	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,016 sec
+
+20:05:08	UPDATE MEDICO SET email = 'joao.silva.novo@clinica.com' WHERE id_medico = 1	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE PAGAMENTO SET status = 'cancelado' WHERE id_pagamento = 7	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE PACIENTE SET convenio = 'Porto Seguro', numero_convenio = 'PS789456' WHERE id_paciente = 3	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	UPDATE EXAME SET status = 'realizado', data_realizacao = CURRENT_DATE, resultado = 'Dentro dos parâmetros normais' WHERE id_exame = 4	1 row(s) affected Rows matched: 1  Changed: 1  Warnings: 0	0,000 sec
+
+20:05:08	DELETE FROM MEDICO_ESPECIALIDADE WHERE id_medico = 2 AND id_especialidade = 8	1 row(s) affected	0,000 sec
+
+20:05:08	SELECT 'Pacientes ativos:' AS info, COUNT(*) AS total FROM PACIENTE WHERE status = 'ativo' UNION ALL SELECT 'Consultas agendadas:', COUNT(*) FROM CONSULTA WHERE status = 'agendada' UNION ALL SELECT 'Pagamentos pendentes:', COUNT(*) FROM PAGAMENTO WHERE status = 'pendente' UNION ALL SELECT 'Exames realizados:', COUNT(*) FROM EXAME WHERE status = 'realizado'	4 row(s) returned	0,000 sec / 0,000 sec
+
+20:05:08	SELECT 'Atualizações executadas com sucesso!' AS status LIMIT 0, 1000	1 row(s) returned	0,000 sec / 0,000 sec
