@@ -3,7 +3,7 @@
 O modelo conceitual foi transformado em modelo lógico relacional. Entidades se tornaram tabelas, atributos se tornaram colunas, e relacionamentos foram implementados através de chaves estrangeiras.
 
 ### Tabelas do Sistema
-
+```
 #### 1. PACIENTE
     id_paciente: INTEGER [PK],
     nome: VARCHAR(100) [NOT NULL],
