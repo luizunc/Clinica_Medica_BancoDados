@@ -1,10 +1,10 @@
 # Sistema de Gerenciamento de Clínica Médica
-## Projeto de Banco de Dados - Etapa 2
+## Projeto de Banco de Dados
 
 ### Tema Escolhido
 **Sistema de Gerenciamento de Clínica Médica**
 
-### Descrição Detalhada do Tema
+### Descrição
 O projeto tem como objetivo desenvolver um banco de dados para o gerenciamento de uma clínica médica de médio porte. O sistema deve permitir controlar pacientes, médicos, consultas, exames, receitas médicas, pagamentos e especialidades médicas.
 
 As principais funcionalidades que o banco de dados deve suportar:
@@ -51,12 +51,33 @@ trabalho/
 │   └── imagens/
 │       └── DER.png
 ├── scripts/
-│   ├── criar_db.sql
-│   ├── inserir_dados.sql
-│   ├── tabelas.sql
-│   └── atualizar_dados.sql
+│   ├── create_database.sql
+│   ├── insert_data.sql
+│   ├── queries.sql
+│   └── updates.sql
 └── evidencias/
-    └── teste_scripts.md
+    ├── Screenshots e Logs/
+    │   ├── Atualizações.png
+    │   ├── Consultas.png
+    │   ├── Criação_DB.png
+    │   ├── criar_db.png
+    │   ├── inserir_dados.png
+    │   ├── tabelas.png
+    │   ├── atualizar_dados.png
+    │   ├── log_criar_db.txt
+    │   ├── log_inserir_dados.txt
+    │   ├── log_tabelas.txt
+    │   └── log_atualizar_dados.txt
+    └── Visualização DB/
+        ├── visualização1_tabelas.png
+        ├── visualização2_consultas.png
+        ├── visualização3_especialidades.png
+        ├── visualização4_exames.png
+        ├── visualização5_medicos.png
+        ├── visualização6_especialidades.png
+        ├── visualização7_pacientes.png
+        ├── visualização8_pagamentos.png
+        └── visualização9_receita.png
 ```
 
 ## Tecnologias Utilizadas
@@ -65,11 +86,8 @@ trabalho/
 - **Versionamento**: Git/GitHub
 
 ## Integrantes do Grupo
-- [Nome do Integrante 1]
-- [Nome do Integrante 2]
-- [Nome do Integrante 3]
-- [Nome do Integrante 4]
-- [Nome do Integrante 5]
+- [Leandro Dias Marcelino]
+- [Luiz Eduardo dos Anjos de Jesus]
 
 ## Como Executar
 1. Clone o repositório
