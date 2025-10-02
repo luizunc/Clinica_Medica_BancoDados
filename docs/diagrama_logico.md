@@ -4,7 +4,9 @@ O modelo conceitual foi transformado em modelo lógico relacional. Entidades se 
 
 ### Tabelas do Sistema
 ```
+
 #### 1. PACIENTE
+```
     id_paciente: INTEGER [PK],
     nome: VARCHAR(100) [NOT NULL],
     cpf: VARCHAR(14) [UNIQUE, NOT NULL],
